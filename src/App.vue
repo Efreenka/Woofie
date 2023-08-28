@@ -6,4 +6,9 @@
 import { RouterView } from 'vue-router'
 </script>
 
-<style scoped></style>
+<style>
+body {
+  width: 100%;
+  background-color: rgb(219 234 254);
+}
+</style>
