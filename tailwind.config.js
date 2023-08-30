@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+/* eslint-env node */
 export default {
   content: [
     "./index.html",
@@ -6,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {},
+    colors: {
+      'icon': '#a3e3ff'
+    },
   },
   plugins: [],
 }

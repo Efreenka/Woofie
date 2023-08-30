@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <Header></Header>
+      <TheHeader />
     </div>
     <RouterView />
   </div>
@@ -9,5 +9,5 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Header from '@/components/Header.vue'
+import TheHeader from '@/components/TheHeader.vue'
 </script>

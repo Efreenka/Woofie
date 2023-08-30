@@ -1,5 +1,5 @@
 <template>
-  <div class=" mt-20">
+  <div class="mt-20">
     <p>breed</p>
     <p>breed</p>
     <p>breed</p>
