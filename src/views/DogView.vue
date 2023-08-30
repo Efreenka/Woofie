@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div >
+    <div class=" mt-20">
+      <p>ksklefnklsefklkfseklfklefklsefkls</p>
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
@@ -70,7 +72,8 @@
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
     <p>ksklefnklsefklkfseklfklefklsefkls</p>
-    <p>ksklefnklsefklkfseklfklefklsefkls</p>
+    </div>
+    
   </div>
 </template>
 

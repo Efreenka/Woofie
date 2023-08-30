@@ -1,17 +1,17 @@
 <template>
   <div
-    class="text-white bg-blue-900 py-3.5 px-6 w-screen flex flex-row fixed z-50 justify-between md:h-16"
+    class="text-white bg-blue-900 py-3.5 pr-6 pl-2 w-screen flex flex-row fixed top-0 z-50 justify-between md:h-16"
   >
-    <div class="flex flex-col md:flex-row md:basis-[90%] gap-3 md:gap-12">
-      <div class="flex justify-center flex-row md:basis-[5%] gap-3">
-        <font-awesome-icon :icon="['fas', 'dog']" style="color: #a3e3ff" class="w-9 h-9" />
-        <button @click="hamburgerMenu()" class="md:hidden block border-none">:::</button>
+    <div class="flex flex-col md:flex-row items-center md:items-start md:basis-[90%]  md:gap-12">
+      <div class="flex flex-row-reverse justify-around md:basis-[5%] gap-3 min-w-[90px]">
+        <font-awesome-icon :icon="['fas', 'dog']" style="color: rgb(163, 227, 255)" class="w-9 h-9" />
+        <button @click="hamburgerMenu()" class="md:hidden block border-none"><font-awesome-icon :icon="['fas', 'bars']" style="color: #a3e3ff;" /></button>
       </div>
       <div class="md:basis-2/5">
         <MainMenu :class="{ hidden: !showMenu, show: showMenu, 'md:block': true }" />
       </div>
     </div>
-    <div class="flex gap-8 md:gap-16 mr-3 md:basis-[10%]">
+    <div class="flex gap-6 md:gap-10 mr-3 pt-1 md:basis-[10%]">
       <DropdownMenuVue :items="languages" />
       <DropdownMenuVue :items="currencies" />
     </div>
@@ -40,6 +40,6 @@ function hamburgerMenu() {
 }
 
 .show {
-  @apply h-24 block align-bottom;
+  @apply h-24 block align-bottom text-start pt-3;
 }
 </style>
