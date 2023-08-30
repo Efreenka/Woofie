@@ -1,11 +1,11 @@
 <template>
   <div
-    class="text-white bg-blue-900 py-3.5 pr-6 pl-2 w-screen flex flex-row fixed top-0 z-50 justify-between md:h-16"
+    class="fixed top-0 z-50 flex w-screen flex-row justify-between bg-blue-900 py-3.5 pl-2 pr-6 text-white md:h-16"
   >
-    <div class="flex flex-col md:flex-row items-center md:items-start md:basis-[90%] md:gap-12">
-      <div class="flex flex-row-reverse justify-around md:basis-[5%] gap-3 min-w-[90px]">
-        <font-awesome-icon :icon="['fas', 'dog']" class="w-9 h-9 text-icon" />
-        <button @click="toggleHamburgerMenu" class="md:hidden block border-none">
+    <div class="flex flex-col items-center md:basis-[90%] md:flex-row md:items-start md:gap-12">
+      <div class="flex min-w-[90px] flex-row-reverse justify-around gap-3 md:basis-[5%]">
+        <font-awesome-icon :icon="['fas', 'dog']" class="h-9 w-9 text-icon" />
+        <button @click="toggleHamburgerMenu" class="block border-none md:hidden">
           <font-awesome-icon :icon="['fas', 'bars']" class="text-icon" />
         </button>
       </div>
@@ -46,6 +46,6 @@ function toggleHamburgerMenu() {
 }
 
 .show {
-  @apply h-24 block align-bottom text-start pt-3 md:pt-0 md:h-0;
+  @apply block h-24 pt-3 text-start align-bottom md:h-0 md:pt-0;
 }
 </style>

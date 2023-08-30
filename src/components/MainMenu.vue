@@ -1,11 +1,11 @@
 <template>
   <nav>
-    <ul class="flex flex-col md:flex-row gap-5 md:gap-10 pt-1 bg-blue-900">
+    <ul class="flex flex-col gap-5 bg-blue-900 pt-1 md:flex-row md:gap-10">
       <li>
-        <router-link to="dog" class="text-xl hover:text-gray-300">Pejsci</router-link>
+        <RouterLink to="dog" class="text-xl hover:text-gray-300">Pejsci</RouterLink>
       </li>
       <li>
-        <router-link to="breed" class="text-xl hover:text-gray-300">Plemeno</router-link>
+        <RouterLink to="breed" class="text-xl hover:text-gray-300">Plemena</RouterLink>
       </li>
     </ul>
   </nav>

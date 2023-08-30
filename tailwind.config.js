@@ -6,9 +6,10 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-    colors: {
-      'icon': '#a3e3ff'
+    extend: {
+      colors: {
+        icon: "#a3e3ff"
+      }
     },
   },
   plugins: [],

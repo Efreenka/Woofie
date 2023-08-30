@@ -4,14 +4,14 @@
     @mouseover="showDropdown = true"
     @mouseleave="showDropdown = false"
   >
-    <button class="w-10 mt-[2px]">{{ selectedItem }}</button>
-    <div v-if="showDropdown" class="absolute mt-2 py-1 bg-white shadow-lg rounded-md text-blue-900">
+    <button class="mt-[2px] w-10 pb-2">{{ selectedItem }}</button>
+    <div v-if="showDropdown" class="absolute rounded-md bg-white py-1 text-blue-900 shadow-lg">
       <a
         href="#!"
         v-for="(item, index) in items"
         :key="index"
         @click="selectItem(item)"
-        class="block px-3 py-2 cursor-pointer hover:bg-gray-100"
+        class="block cursor-pointer px-3 py-2 hover:bg-gray-100"
       >
         {{ item }}
       </a>
