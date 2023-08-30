@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <router-link to="dog">Pejsci</router-link>
-      <router-link to="breed">Plemeno</router-link>
+      <TheHeader />
     </div>
     <RouterView />
   </div>
 </template>
 
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import TheHeader from '@/components/TheHeader.vue'
 </script>
