@@ -4,7 +4,7 @@
     @mouseover="showDropdown = true"
     @mouseleave="showDropdown = false"
   >
-    <button class=" w-10 text-xl">{{ selectedItem }}</button>
+    <button class=" w-10">{{ selectedItem }}</button>
     <div v-if="showDropdown" class="absolute mt-2 py-1 bg-white shadow-lg rounded-md text-blue-900">
       <a
         href="#!"

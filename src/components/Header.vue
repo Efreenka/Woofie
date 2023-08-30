@@ -8,7 +8,7 @@
         <button @click="hamburgerMenu()" class="md:hidden block border-none"><font-awesome-icon :icon="['fas', 'bars']" style="color: #a3e3ff;" /></button>
       </div>
       <div class="md:basis-2/5">
-        <MainMenu :class="{ hidden: !showMenu, show: showMenu, 'md:block': true }" />
+        <MainMenu @click="showMenu = false" :class="{ hidden: !showMenu, show: showMenu, 'md:block': true }" />
       </div>
     </div>
     <div class="flex gap-6 md:gap-10 mr-3 pt-1 md:basis-[10%]">
