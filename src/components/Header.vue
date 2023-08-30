@@ -11,7 +11,7 @@
         <MainMenu @click="showMenu = false" :class="{ hidden: !showMenu, show: showMenu, 'md:block': true }" />
       </div>
     </div>
-    <div class="flex gap-6 md:gap-10 mr-3 pt-1 md:basis-[10%]">
+    <div class="flex gap-6 pt-1 md:basis-[10%]">
       <DropdownMenuVue :items="languages" />
       <DropdownMenuVue :items="currencies" />
     </div>
