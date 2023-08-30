@@ -40,6 +40,6 @@ function hamburgerMenu() {
 }
 
 .show {
-  @apply h-24 block align-bottom text-start pt-3;
+  @apply h-24 block align-bottom text-start pt-3 md:pt-0 md:h-0;
 }
 </style>
