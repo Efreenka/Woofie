@@ -9,6 +9,6 @@ import { RouterView } from 'vue-router'
 <style>
 body {
   width: 100%;
-  background-color: rgb(219 234 254);
+  background-color: rgb(239 246 255);
 }
 </style>
