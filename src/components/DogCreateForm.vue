@@ -1,24 +1,30 @@
 <template>
   <div>
     <div
-      class="mx-auto h-[540px] w-[320px] rounded-md bg-formBg p-3 shadow-md md:h-[540px] md:w-[500px]"
+      class="mx-auto h-[480px] w-[320px] rounded-md bg-formBg p-3 shadow-md md:w-[500px]"
     >
       <form @submit.prevent="submitForm" class="flex flex-col gap-1 pt-1">
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="name">Jméno psa:</label>
-          <div class="flex flex-col">
-            <input id="name" type="text" v-model="formData.name" class="w-44 md:w-56" />
-
-            <span v-for="error in v$.name.$errors" :key="error.$uid" class="text-sm text-red-500">
-              {{ error.$message }}</span
-            >
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <input 
+              id="name" 
+              type="text"
+              placeholder="Jméno psa"
+              v-model="formData.name" 
+              @blur="v$.name.$touch" 
+              class=" pl-1" 
+            />
+            <span v-if="v$.name.$errors.length > 0" class=" text-xs text-red-500 ">{{ console.log(v$.name.$errors[0].$message) }}
+              {{ v$.name.$errors[0].$message }}
+            </span>
           </div>
         </div>
 
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="breed">Plemeno psa:</label>
-          <div class="flex flex-col">
-            <select id="breed" class="w-44 md:w-56" v-model="formData.breedId">
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <select id="breed" v-model="formData.breedId" @blur="v$.breedId.$touch">
               <option disabled value="">Psí plemena</option>
               <option v-for="breed in breeds" :key="breed.name" :value="breed.name">
                 {{ breed.name }}
@@ -27,55 +33,78 @@
             <span
               v-for="error in v$.breedId.$errors"
               :key="error.$uid"
-              class="text-sm text-red-500"
+              class="text-xs text-red-500"
             >
               {{ error.$message }}</span
             >
           </div>
         </div>
 
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="height">Výška psa:</label>
-          <div class="flex flex-col">
-            <input id="height" type="number" v-model="formData.height" class="w-44 md:w-56" />
-            <span v-for="error in v$.height.$errors" :key="error.$uid" class="text-sm text-red-500">
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <input 
+              id="height" 
+              type="number"
+              placeholder="Výška psa"
+              v-model="formData.height" 
+              @blur="v$.height.$touch" 
+              class=" pl-1" 
+            />
+            <span v-for="error in v$.height.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}</span
             >
           </div>
         </div>
 
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="weight">Váha psa:</label>
-          <div class="flex flex-col">
-            <input id="weight" type="number" v-model="formData.weight" class="w-44 md:w-56" />
-            <span v-for="error in v$.weight.$errors" :key="error.$uid" class="text-sm text-red-500">
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <input 
+              id="weight" 
+              type="number"
+              placeholder="Váha psa"
+              v-model="formData.weight" 
+              @blur="v$.weight.$touch" 
+              class=" pl-1" 
+            />
+            <span v-for="error in v$.weight.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}</span
             >
           </div>
         </div>
 
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="price">Cena psa:</label>
-          <div class="flex flex-col">
-            <input id="price" type="number" v-model="formData.price" class="w-44 md:w-56" />
-            <span v-for="error in v$.price.$errors" :key="error.$uid" class="text-sm text-red-500">
-              {{ error.$message }}</span
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <input 
+              id="price" 
+              type="number"
+              placeholder="Cena psa"
+              v-model="formData.price" 
+              @blur="v$.price.$touch" 
+              class=" pl-1" 
+            />
+            <span v-for="error in v$.price.$errors" :key="error.$uid" class="text-xs text-red-500">
+              {{ error.$message }}
+              
+              </span
             >
           </div>
         </div>
 
-        <MyDate v-model:modelValue="formData.dayOfBirth" :errors="v$.dayOfBirth.$errors"></MyDate>
+        <MyDate v-model:modelValue="formData.dateOfBirth" :errors="v$.dateOfBirth.$errors" :validate="v$.dateOfBirth.$touch"></MyDate>
 
-        <div class="flex h-16 flex-row justify-between md:mx-4">
+        <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="gender">Pohlaví psa:</label>
-          <div class="flex flex-col">
-            <select id="gender" class="w-44 md:w-56" v-model="formData.gender">
+          <div class="flex flex-col w-44 md:w-56 break-words">
+            <select id="gender" v-model="formData.gender " @blur="v$.gender.$touch" >
               <option disabled value="">Pohlaví psa</option>
               <option :value="Gender[0]">Pes</option>
               <option :value="Gender[1]">Fena</option>
             </select>
 
-            <span v-for="error in v$.gender.$errors" :key="error.$uid" class="text-sm text-red-500">
+            <span v-for="error in v$.gender.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}</span
             >
           </div>
@@ -94,7 +123,7 @@
       <span>{{ dog.breedId }}</span>
       <span>{{ dog.price }}</span>
       <span>{{ dog.gender }}</span>
-      <span>{{ dayjs(dog.dayOfBirth).format('DD. MM. YYYY') }}</span>
+      <span>{{ dayjs(dog.dateOfBirth).format('DD. MM. YYYY') }}</span>
     </div>
   </div>
 </template>
@@ -112,7 +141,7 @@ import { Gender } from '../interfaces/Gender'
 import MyDate from './MyDate.vue'
 import dayjs from 'dayjs'
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['closeModal'])
 
 const storeDog = useDogStore()
 const { dogs } = storeToRefs(storeDog)
@@ -124,35 +153,32 @@ const formData = reactive({
   id: uuidv4(),
   name: '',
   breedId: '',
-  height: 0,
-  weight: 0,
-  price: 0,
-  dayOfBirth: new Date(),
+  height: null,
+  weight: null,
+  price: null,
+  dateOfBirth: new Date(),
   gender: ''
 } as Dog)
 
-// <div>
-//     <p>Errors</p>
-//     <span v-for="error in v$.$errors" :key="error.$uid"> {{ error.$property }} - {{ error.$message }}, </span>
-// </div>
+const containsUser = (value:any) => {
+    return value.includes('a')
+}
 
-// const containsUser = (value:any) => {
-//     return value.includes('a')
-// }
-// name: { required: helpers.withMessage("Pole není vyplněno", required), minLength: minLength(3), containsUser: helpers.withMessage("ahoj", containsUser), },
+const requiredMessage = 'Pole není vyplněno'
 
 const rules = computed(() => {
   return {
     name: {
-      required: helpers.withMessage('Pole není vyplněno', required),
-      minLength: minLength(3)
+      required: helpers.withMessage(requiredMessage, required),
+      minLength: minLength(3),
+      containsUser: helpers.withMessage("Pole musí obsahovat 'a'", containsUser),
     },
-    breedId: { required: helpers.withMessage('Pole není vyplněno', required) },
-    height: { required: helpers.withMessage('Pole není vyplněno', required) },
-    weight: { required: helpers.withMessage('Pole není vyplněno', required) },
-    price: { required: helpers.withMessage('Pole není vyplněno', required) },
-    dayOfBirth: { required: helpers.withMessage('Pole není vyplněno', required) },
-    gender: { required: helpers.withMessage('Pole není vyplněno', required) }
+    breedId: { required: helpers.withMessage(requiredMessage, required) },
+    height: { required: helpers.withMessage(requiredMessage, required) },
+    weight: { required: helpers.withMessage(requiredMessage, required) },
+    price: { required: helpers.withMessage(requiredMessage, required) },
+    dateOfBirth: { required: helpers.withMessage(requiredMessage, required) },
+    gender: { required: helpers.withMessage(requiredMessage, required) }
   }
 })
 
@@ -168,22 +194,22 @@ const submitForm = async () => {
       height: formData.height,
       weight: formData.weight,
       price: formData.price,
-      dayOfBirth: formData.dayOfBirth,
+      dateOfBirth: formData.dateOfBirth,
       gender: formData.gender
     })
-    console.log(dog.gender)
+    
     addDog(dog)
 
     formData.id = uuidv4()
     formData.name = ''
     formData.breedId = ''
-    formData.height = 0
-    formData.weight = 0
-    formData.price = 0
-    formData.dayOfBirth = new Date()
+    formData.height = null
+    formData.weight = null
+    formData.price = null
+    formData.dateOfBirth = new Date()
     formData.gender = ''
 
-    emit('close')
+    emit('closeModal')
   } else {
     alert('error')
   }
