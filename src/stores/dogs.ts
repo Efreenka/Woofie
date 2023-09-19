@@ -5,5 +5,9 @@ import type { Dog } from '@/interfaces/Dog'
 export const useDogStore = defineStore('dogStore', () => {
   const dogs = reactive([] as Dog[])
 
-  return { dogs }
+  function addDog(dog: any) {
+    dogs.push(dog)
+  }
+
+  return { dogs, addDog }
 })

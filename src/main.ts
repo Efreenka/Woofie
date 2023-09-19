@@ -10,12 +10,12 @@ import { faBars, faDog, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 library.add(faBars, faDog, faXmark)
 
-app.use(createPinia())
 app.use(router)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
-
+app.use(pinia)
 app.mount('#app')

@@ -8,7 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        icon: "#a3e3ff"
+        icon: "#a3e3ff",
+        button: "#1F6DAD",
+        formBg: "#EBF8FE"
       }
     },
   },
