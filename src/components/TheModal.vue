@@ -8,7 +8,7 @@
         <div
           class="m-auto flex max-w-[700px] flex-col items-center gap-3 rounded-sm bg-white px-5 py-3 md:px-8 md:py-5"
         >
-          <button class="self-end" @click="$emit('close')">
+          <button class="self-end" @click="$emit('closeModal')">
             <font-awesome-icon
               :icon="['fas', 'xmark']"
               class="text-2xl text-slate-400 transition-colors duration-150 hover:text-black"

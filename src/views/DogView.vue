@@ -1,16 +1,15 @@
 <template>
   <div>
     <div class="mt-20">
-      <button id="show-modal" @click="showModal = true">Show Modal</button>
+      <button id="show-modal" @click="showModal">Show Modal</button>
 
       <Teleport to="body">
-        <!-- use the modal component, pass in the prop -->
-        <TheModal :show="showModal" @close="showModal = false">
+        <TheModal :show="isModalOpen" @closeModal="closeModal">
           <template #header>
             <h3>Registrace psa</h3>
           </template>
           <template #body>
-            <DogCreateForm @close="closeModal"></DogCreateForm>
+            <DogCreateForm @closeModal="closeModal"></DogCreateForm>
           </template>
         </TheModal>
       </Teleport>
@@ -23,9 +22,14 @@ import { ref } from 'vue'
 import TheModal from '@/components/TheModal.vue'
 import DogCreateForm from '@/components/DogCreateForm.vue'
 
-const showModal = ref(false)
+const isModalOpen = ref(false)
+
+const showModal = () => {
+  isModalOpen.value = true
+}
+
 const closeModal = () => {
-  showModal.value = false
+  isModalOpen.value = false
 }
 </script>
 
