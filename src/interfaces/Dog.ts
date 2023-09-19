@@ -5,8 +5,8 @@ export interface Dog {
   name: string
   breedId: string
   gender: Gender | string
-  height: number
-  weight: number
-  price: number
-  dayOfBirth: Date
+  height: number | null
+  weight: number | null
+  price: number | null
+  dateOfBirth: Date
 }
