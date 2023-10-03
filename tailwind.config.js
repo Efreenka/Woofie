@@ -10,7 +10,8 @@ export default {
       colors: {
         icon: "#a3e3ff",
         button: "#1F6DAD",
-        formBg: "#EBF8FE"
+        formBg: "#EBF8FE",
+        bgColor: "#f4f8f8"
       }
     },
   },

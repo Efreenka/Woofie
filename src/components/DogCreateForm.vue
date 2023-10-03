@@ -116,15 +116,6 @@
         />
       </form>
     </div>
-
-    <h1>Kartička</h1>
-    <div v-for="dog in dogs" :key="dog.id">
-      <span>{{ dog.name }}</span>
-      <span>{{ dog.breedId }}</span>
-      <span>{{ dog.price }}</span>
-      <span>{{ dog.gender }}</span>
-      <span>{{ dayjs(dog.dateOfBirth).format('DD. MM. YYYY') }}</span>
-    </div>
   </div>
 </template>
 
