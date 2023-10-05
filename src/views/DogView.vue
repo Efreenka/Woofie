@@ -1,22 +1,26 @@
 <template>
-  <div class=" w-3/4 h-screen m-auto  bg-bgColor pt-16 ">
-    <div class="  bg-bgColor p-10 flex flex-row gap-4 flex-wrap justify-center ">
-      
-    <button id="show-modal" @click="showModal" class="  w-80 h-[400px] text-9xl bg-blue-100 text-white" ><font-awesome-icon :icon="['fas', 'plus']" /></button>
+  <div class="m-auto grid h-screen justify-center bg-bgColor pt-16 md:w-3/4">
+    <div class="flex flex-row flex-wrap gap-8 bg-bgColor p-10">
+      <button
+        id="show-modal"
+        @click="showModal"
+        class="h-[400px] w-80 bg-blue-100 text-9xl text-white transition-all hover:bg-white hover:text-blue-100 hover:duration-500"
+      >
+        <font-awesome-icon :icon="['fas', 'plus']" />
+      </button>
 
-    <Teleport to="body">
-      <TheModal :show="isModalOpen" @closeModal="closeModal">
-        <template #header>
-          <h3>Registrace psa</h3>
-        </template>
-        <template #body>
-          <DogCreateForm @closeModal="closeModal"></DogCreateForm>
-        </template>
-      </TheModal>
-    </Teleport>
-  
-    <DogCard v-for="dog in dogs" :dog="dog"></DogCard>
-      
+      <Teleport to="body">
+        <TheModal :show="isModalOpen" @closeModal="closeModal">
+          <template #header>
+            <h3>Registrace psa</h3>
+          </template>
+          <template #body>
+            <DogCreateForm @closeModal="closeModal"></DogCreateForm>
+          </template>
+        </TheModal>
+      </Teleport>
+
+      <DogCard v-for="dog in dogs" :key="dog.id" :dog="dog"></DogCard>
     </div>
   </div>
 </template>
