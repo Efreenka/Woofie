@@ -1,21 +1,20 @@
 <template>
   <div>
-    <div
-      class="mx-auto h-[480px] w-[320px] rounded-md bg-formBg p-3 shadow-md md:w-[500px]"
-    >
+    <div class="mx-auto h-[480px] w-[320px] rounded-md bg-formBg p-3 shadow-md md:w-[500px]">
       <form @submit.prevent="submitForm" class="flex flex-col gap-1 pt-1">
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="name">Jméno psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
-            <input 
-              id="name" 
+          <div class="flex w-44 flex-col break-words md:w-56">
+            <input
+              id="name"
               type="text"
               placeholder="Jméno psa"
-              v-model="formData.name" 
-              @blur="v$.name.$touch" 
-              class=" pl-1" 
+              v-model="formData.name"
+              @blur="v$.name.$touch"
+              class="pl-1"
             />
-            <span v-if="v$.name.$errors.length > 0" class=" text-xs text-red-500 ">{{ console.log(v$.name.$errors[0].$message) }}
+            <span v-if="v$.name.$errors.length > 0" class="text-xs text-red-500"
+              >{{ console.log(v$.name.$errors[0].$message) }}
               {{ v$.name.$errors[0].$message }}
             </span>
           </div>
@@ -23,7 +22,7 @@
 
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="breed">Plemeno psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
+          <div class="flex w-44 flex-col break-words md:w-56">
             <select id="breed" v-model="formData.breedId" @blur="v$.breedId.$touch">
               <option disabled value="">Psí plemena</option>
               <option v-for="breed in breeds" :key="breed.name" :value="breed.name">
@@ -42,14 +41,14 @@
 
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="height">Výška psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
-            <input 
-              id="height" 
+          <div class="flex w-44 flex-col break-words md:w-56">
+            <input
+              id="height"
               type="number"
               placeholder="Výška psa"
-              v-model="formData.height" 
-              @blur="v$.height.$touch" 
-              class=" pl-1" 
+              v-model="formData.height"
+              @blur="v$.height.$touch"
+              class="pl-1"
             />
             <span v-for="error in v$.height.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}</span
@@ -59,14 +58,14 @@
 
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="weight">Váha psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
-            <input 
-              id="weight" 
+          <div class="flex w-44 flex-col break-words md:w-56">
+            <input
+              id="weight"
               type="number"
               placeholder="Váha psa"
-              v-model="formData.weight" 
-              @blur="v$.weight.$touch" 
-              class=" pl-1" 
+              v-model="formData.weight"
+              @blur="v$.weight.$touch"
+              class="pl-1"
             />
             <span v-for="error in v$.weight.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}</span
@@ -76,29 +75,31 @@
 
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="price">Cena psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
-            <input 
-              id="price" 
+          <div class="flex w-44 flex-col break-words md:w-56">
+            <input
+              id="price"
               type="number"
               placeholder="Cena psa"
-              v-model="formData.price" 
-              @blur="v$.price.$touch" 
-              class=" pl-1" 
+              v-model="formData.price"
+              @blur="v$.price.$touch"
+              class="pl-1"
             />
             <span v-for="error in v$.price.$errors" :key="error.$uid" class="text-xs text-red-500">
               {{ error.$message }}
-              
-              </span
-            >
+            </span>
           </div>
         </div>
 
-        <MyDate v-model:modelValue="formData.dateOfBirth" :errors="v$.dateOfBirth.$errors" :validate="v$.dateOfBirth.$touch"></MyDate>
+        <MyDate
+          v-model:modelValue="formData.dateOfBirth"
+          :errors="v$.dateOfBirth.$errors"
+          :validate="v$.dateOfBirth.$touch"
+        ></MyDate>
 
         <div class="flex h-14 flex-row justify-between md:mx-4">
           <label for="gender">Pohlaví psa:</label>
-          <div class="flex flex-col w-44 md:w-56 break-words">
-            <select id="gender" v-model="formData.gender " @blur="v$.gender.$touch" >
+          <div class="flex w-44 flex-col break-words md:w-56">
+            <select id="gender" v-model="formData.gender" @blur="v$.gender.$touch">
               <option disabled value="">Pohlaví psa</option>
               <option :value="Gender[0]">Pes</option>
               <option :value="Gender[1]">Fena</option>
@@ -116,15 +117,6 @@
         />
       </form>
     </div>
-
-    <h1>Kartička</h1>
-    <div v-for="dog in dogs" :key="dog.id">
-      <span>{{ dog.name }}</span>
-      <span>{{ dog.breedId }}</span>
-      <span>{{ dog.price }}</span>
-      <span>{{ dog.gender }}</span>
-      <span>{{ dayjs(dog.dateOfBirth).format('DD. MM. YYYY') }}</span>
-    </div>
   </div>
 </template>
 
@@ -139,12 +131,10 @@ import useVuelidate from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import { Gender } from '../interfaces/Gender'
 import MyDate from './MyDate.vue'
-import dayjs from 'dayjs'
 
 const emit = defineEmits(['closeModal'])
 
 const storeDog = useDogStore()
-const { dogs } = storeToRefs(storeDog)
 const { addDog } = storeDog
 const storeBreed = useBreedStore()
 const { breeds } = storeToRefs(storeBreed)
@@ -160,8 +150,8 @@ const formData = reactive({
   gender: ''
 } as Dog)
 
-const containsUser = (value:any) => {
-    return value.includes('a')
+const containsUser = (value: any) => {
+  return value.includes('a')
 }
 
 const requiredMessage = 'Pole není vyplněno'
@@ -171,7 +161,7 @@ const rules = computed(() => {
     name: {
       required: helpers.withMessage(requiredMessage, required),
       minLength: minLength(3),
-      containsUser: helpers.withMessage("Pole musí obsahovat 'a'", containsUser),
+      containsUser: helpers.withMessage("Pole musí obsahovat 'a'", containsUser)
     },
     breedId: { required: helpers.withMessage(requiredMessage, required) },
     height: { required: helpers.withMessage(requiredMessage, required) },
@@ -197,7 +187,7 @@ const submitForm = async () => {
       dateOfBirth: formData.dateOfBirth,
       gender: formData.gender
     })
-    
+
     addDog(dog)
 
     formData.id = uuidv4()
