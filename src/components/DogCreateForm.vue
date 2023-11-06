@@ -135,7 +135,7 @@ import { required, minLength, helpers, minValue, maxValue } from '@vuelidate/val
 import { Gender } from '../interfaces/Gender'
 import MyDate from './MyDate.vue'
 import { toast } from 'vue3-toastify'
-import 'vue3-toastify/dist/index.css'
+import type { Breed } from '@/interfaces/Breed'
 
 const emit = defineEmits(['closeModal'])
 
@@ -156,11 +156,11 @@ const formData = reactive({
 } as Dog)
 
 const breed = computed(() => {
-  const oneBreed = breeds.value.find((b: any) => b.name === formData.breedId)
+  const oneBreed = breeds.value.find((b: Breed) => b.name === formData.breedId)
   return oneBreed
 })
 
-const containsUser = (value: any) => {
+const vatidateName = (value: string) => {
   const regex = /^\S[\p{L}\s]*$/u // Unicode: flag "u" and class \p
   return regex.test(value)
 }
@@ -172,9 +172,9 @@ const rules = computed(() => {
     name: {
       required: helpers.withMessage(requiredMessage, required),
       minLength: helpers.withMessage('Toto pole by mělo mít alespoň 3 znaky!', minLength(3)),
-      containsUser: helpers.withMessage(
+      vatidateName: helpers.withMessage(
         'Pole musí obsahovat pouze písmena, žádná mezera před jménem!',
-        containsUser
+        vatidateName
       )
     },
     breedId: { required: helpers.withMessage(requiredMessage, required) },
