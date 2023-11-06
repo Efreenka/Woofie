@@ -8,6 +8,7 @@ import router from './router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faBars, faDog, faMars, faPlus, faVenus, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import 'vue3-toastify/dist/index.css'
 
 const app = createApp(App)
 const pinia = createPinia()

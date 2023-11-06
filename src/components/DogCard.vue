@@ -1,4 +1,3 @@
-import { Dog } from '../interfaces/Dog';
 <template>
   <div class="flex h-[400px] w-80 flex-col overflow-hidden">
     <div
@@ -29,6 +28,7 @@ import { Dog } from '../interfaces/Dog';
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import type { Dog } from '@/interfaces/Dog'
+
 interface Props {
   dog: Dog
 }

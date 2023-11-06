@@ -8,6 +8,7 @@
         v-model="dateOfBirth"
         @blur="$emit('validate')"
         class="pl-[2px]"
+        :disabled="disabled"
       />
       <span v-for="error in errors" :key="error.$uid" class="text-sm text-red-500">
         {{ error.$message }}</span
@@ -19,7 +20,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import dayjs from 'dayjs'
-const props = defineProps(['modelValue', 'errors'])
+const props = defineProps(['modelValue', 'errors', 'disabled'])
 const emit = defineEmits(['update:modelValue', 'validate'])
 
 const dateOfBirth = computed({
