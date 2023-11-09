@@ -1,13 +1,13 @@
 <template>
   <div class="flex h-14 flex-row justify-between md:mx-4">
-    <label for="dateOfBirth">Datum narození:</label>
+    <label for="dateOfBirth" class="text-sm md:text-base">Datum narození:</label>
     <div class="flex w-44 flex-col break-words md:w-56">
       <input
         id="dateOfBirth"
         type="date"
         v-model="dateOfBirth"
         @blur="$emit('validate')"
-        class="pl-[2px]"
+        class="pl-[2px] text-sm md:text-base"
         :disabled="disabled"
       />
       <span v-for="error in errors" :key="error.$uid" class="text-sm text-red-500">

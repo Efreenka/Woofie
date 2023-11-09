@@ -30,5 +30,9 @@ export const useBreedStore = defineStore('breedStore', () => {
     }
   ] as Breed[])
 
-  return { breeds }
+  function addBreed(breed: Breed) {
+    breeds.push(breed)
+  }
+
+  return { breeds, addBreed }
 })
