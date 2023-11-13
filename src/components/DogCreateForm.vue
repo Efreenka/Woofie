@@ -10,7 +10,7 @@
             placeholder="Jméno psa"
             v-model="formData.name"
             @blur="v$.name.$touch"
-            class=" text-sm md:text-base pl-1"
+            class="pl-1 text-sm md:text-base"
           />
           <span v-if="v$.name.$errors.length > 0" class="text-xs text-red-500"
             >{{ v$.name.$errors[0].$message }}
@@ -18,24 +18,25 @@
         </div>
       </div>
 
-    <div class="flex h-14 flex-row justify-between md:mx-4">
-      <label for="breed" class="text-sm md:text-base">Plemeno psa:</label>
-      <div class="flex w-44 flex-col break-words md:w-56">
-        <select id="breed" class="text-sm md:text-base" v-model="formData.breedId" @blur="v$.breedId.$touch">
-          <option disabled value="">Psí plemena</option>
-          <option v-for="breed in breeds" :key="breed.name" :value="breed.name">
-            {{ breed.name }}
-          </option>
-        </select>
-        <span
-          v-for="error in v$.breedId.$errors"
-          :key="error.$uid"
-          class="text-xs text-red-500"
-        >
-          {{ error.$message }}</span
-        >
+      <div class="flex h-14 flex-row justify-between md:mx-4">
+        <label for="breed" class="text-sm md:text-base">Plemeno psa:</label>
+        <div class="flex w-44 flex-col break-words md:w-56">
+          <select
+            id="breed"
+            class="text-sm md:text-base"
+            v-model="formData.breedId"
+            @blur="v$.breedId.$touch"
+          >
+            <option disabled value="">Psí plemena</option>
+            <option v-for="breed in breeds" :key="breed.name" :value="breed.name">
+              {{ breed.name }}
+            </option>
+          </select>
+          <span v-for="error in v$.breedId.$errors" :key="error.$uid" class="text-xs text-red-500">
+            {{ error.$message }}</span
+          >
+        </div>
       </div>
-    </div>
 
       <div class="flex h-14 flex-row justify-between md:mx-4">
         <label for="height" class="text-sm md:text-base">Výška psa:</label>
@@ -46,7 +47,7 @@
             placeholder="Výška psa"
             v-model="formData.height"
             @blur="v$.height.$touch"
-            class="text-sm md:text-base pl-1"
+            class="pl-1 text-sm md:text-base"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.height.$errors" :key="error.$uid" class="text-xs text-red-500">
@@ -64,7 +65,7 @@
             placeholder="Váha psa"
             v-model="formData.weight"
             @blur="v$.weight.$touch"
-            class="text-sm md:text-base pl-1"
+            class="pl-1 text-sm md:text-base"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.weight.$errors" :key="error.$uid" class="text-xs text-red-500">
@@ -82,7 +83,7 @@
             placeholder="Cena psa"
             v-model="formData.price"
             @blur="v$.price.$touch"
-            class="text-sm md:text-base pl-1"
+            class="pl-1 text-sm md:text-base"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.price.$errors" :key="error.$uid" class="text-xs text-red-500">
@@ -98,14 +99,19 @@
         :disabled="!formData.breedId"
       ></MyDate>
 
-    <div class="flex h-14 flex-row justify-between md:mx-4">
-      <label for="gender" class="text-sm md:text-base">Pohlaví psa:</label>
-      <div class="flex w-44 flex-col break-words md:w-56">
-        <select id="gender" class="text-sm md:text-base" v-model="formData.gender" @blur="v$.gender.$touch">
-          <option disabled value="">Pohlaví psa</option>
-          <option :value="Gender[0]">Pes</option>
-          <option :value="Gender[1]">Fena</option>
-        </select>
+      <div class="flex h-14 flex-row justify-between md:mx-4">
+        <label for="gender" class="text-sm md:text-base">Pohlaví psa:</label>
+        <div class="flex w-44 flex-col break-words md:w-56">
+          <select
+            id="gender"
+            class="text-sm md:text-base"
+            v-model="formData.gender"
+            @blur="v$.gender.$touch"
+          >
+            <option disabled value="">Pohlaví psa</option>
+            <option :value="Gender[0]">Pes</option>
+            <option :value="Gender[1]">Fena</option>
+          </select>
 
           <span v-for="error in v$.gender.$errors" :key="error.$uid" class="text-xs text-red-500">
             {{ error.$message }}</span
@@ -113,7 +119,7 @@
         </div>
       </div>
       <input
-        class="mr-4 w-20 text-sm md:text-base md:w-24 self-end rounded-md border bg-button p-1 text-white hover:cursor-pointer"
+        class="mr-4 w-20 self-end rounded-md border bg-button p-1 text-sm text-white hover:cursor-pointer md:w-24 md:text-base"
         type="submit"
         value="Odeslat"
       />

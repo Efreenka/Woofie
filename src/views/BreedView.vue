@@ -1,10 +1,7 @@
 <template>
   <div class="container">
     <div class="a">
-      <button
-        id="show-modal"
-        @click="showModal"
-      >
+      <button id="show-modal" @click="showModal">
         <font-awesome-icon :icon="['fas', 'plus']" />
       </button>
 
