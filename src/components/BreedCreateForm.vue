@@ -4,12 +4,7 @@
       <div class="field">
         <label for="name">Název plemene:</label>
         <div class="input-error-field">
-          <input 
-            type="text" 
-            id="name" 
-            placeholder="Název plemene" 
-            v-model="formData.name" 
-          />
+          <input type="text" id="name" placeholder="Název plemene" v-model="formData.name" />
           <span v-if="v$.name.$errors.length > 0" class="error"
             >{{ v$.name.$errors[0].$message }}
           </span>
@@ -128,11 +123,11 @@
       <div class="field">
         <label for="lifeSpan">Životnost:</label>
         <div class="input-error-field">
-          <input 
-            type="number" 
-            id="lifeSpan" 
-            placeholder="Životnost" 
-            v-model="formData.lifeSpan" 
+          <input
+            type="number"
+            id="lifeSpan"
+            placeholder="Životnost"
+            v-model="formData.lifeSpan"
             min="0"
             max="1000"
           />
@@ -157,11 +152,7 @@
         </div>
       </div>
 
-      <input 
-        class="submit-breed-button" 
-        type="submit" 
-        value="Odeslat" 
-      />
+      <input class="submit-breed-button" type="submit" value="Odeslat" />
     </form>
   </div>
 </template>
@@ -172,7 +163,7 @@ import { v4 as uuidv4 } from 'uuid'
 import type { Breed } from '@/interfaces/Breed'
 import { useBreedStore } from '@/stores/breeds'
 import useVuelidate from '@vuelidate/core'
-import { required, minLength, helpers, minValue, maxValue } from '@vuelidate/validators'
+import { required, minLength, helpers } from '@vuelidate/validators'
 import { toast } from 'vue3-toastify'
 
 const emit = defineEmits(['closeModal'])
@@ -201,65 +192,64 @@ const vatidateName = (value: string) => {
 const requiredMessage = 'Pole není vyplněno!'
 
 const rules = computed(() => {
-    return {
-      name: {
-        required: helpers.withMessage(requiredMessage, required),
-        minLength: helpers.withMessage('Toto pole by mělo mít alespoň 3 znaky!', minLength(3)),
-        vatidateName: helpers.withMessage(
-          'Pole musí obsahovat pouze písmena, žádná mezera před jménem!',
-          vatidateName
-        )
-      },
-      minHeight: { required: helpers.withMessage(requiredMessage, required) },
-      maxHeight: { required: helpers.withMessage(requiredMessage, required) },
-      minWeight: { required: helpers.withMessage(requiredMessage, required) },
-      maxWeight: { required: helpers.withMessage(requiredMessage, required) },
-      minPrice: { required: helpers.withMessage(requiredMessage, required) },
-      maxPrice: { required: helpers.withMessage(requiredMessage, required) },
-      lifeSpan: { required: helpers.withMessage(requiredMessage, required) },
-      purpose: { required: helpers.withMessage(requiredMessage, required) }
-    }
+  return {
+    name: {
+      required: helpers.withMessage(requiredMessage, required),
+      minLength: helpers.withMessage('Toto pole by mělo mít alespoň 3 znaky!', minLength(3)),
+      vatidateName: helpers.withMessage(
+        'Pole musí obsahovat pouze písmena, žádná mezera před jménem!',
+        vatidateName
+      )
+    },
+    minHeight: { required: helpers.withMessage(requiredMessage, required) },
+    maxHeight: { required: helpers.withMessage(requiredMessage, required) },
+    minWeight: { required: helpers.withMessage(requiredMessage, required) },
+    maxWeight: { required: helpers.withMessage(requiredMessage, required) },
+    minPrice: { required: helpers.withMessage(requiredMessage, required) },
+    maxPrice: { required: helpers.withMessage(requiredMessage, required) },
+    lifeSpan: { required: helpers.withMessage(requiredMessage, required) },
+    purpose: { required: helpers.withMessage(requiredMessage, required) }
+  }
 })
 
 const v$ = useVuelidate(rules, formData)
 
 const submitBreedForm = async () => {
-    const result = await v$.value.$validate()
+  const result = await v$.value.$validate()
 
-    if (result) {
-        const breed = reactive({
-            id: formData.id,
-            name: formData.name,
-            minHeight: formData.minHeight,
-            maxHeight: formData.maxHeight,
-            minWeight: formData.minWeight,
-            maxWeight: formData.maxWeight,
-            minPrice: formData.minPrice,
-            maxPrice: formData.maxPrice,
-            lifeSpan: formData.lifeSpan,
-            purpose: formData.purpose
-        })
+  if (result) {
+    const breed = reactive({
+      id: formData.id,
+      name: formData.name,
+      minHeight: formData.minHeight,
+      maxHeight: formData.maxHeight,
+      minWeight: formData.minWeight,
+      maxWeight: formData.maxWeight,
+      minPrice: formData.minPrice,
+      maxPrice: formData.maxPrice,
+      lifeSpan: formData.lifeSpan,
+      purpose: formData.purpose
+    })
 
-        addBreed(breed)
+    addBreed(breed)
 
-        formData.id = uuidv4()
-        formData.name = ''
-        formData.minHeight = null
-        formData.maxHeight = null
-        formData.minWeight = null
-        formData.maxWeight = null
-        formData.minPrice = null
-        formData.maxPrice = null
-        formData.lifeSpan = null
-        formData.purpose = ''
+    formData.id = uuidv4()
+    formData.name = ''
+    formData.minHeight = null
+    formData.maxHeight = null
+    formData.minWeight = null
+    formData.maxWeight = null
+    formData.minPrice = null
+    formData.maxPrice = null
+    formData.lifeSpan = null
+    formData.purpose = ''
 
-        emit('closeModal')
-    } else {
-        toast.error('Chyba! Vyplňte správně formulář!', {
-            autoClose: 5000
-        })
-    }
-  
+    emit('closeModal')
+  } else {
+    toast.error('Chyba! Vyplňte správně formulář!', {
+      autoClose: 5000
+    })
+  }
 }
 </script>
 
@@ -315,16 +305,16 @@ input[type='text'],
 }
 
 .error {
-    font-size: 12px;
-    color: rgb(239, 68, 68);
-    padding-left: 4px;
+  font-size: 12px;
+  color: rgb(239, 68, 68);
+  padding-left: 4px;
 }
 
 .error-custom {
-    font-size: 12px;
-    color: rgb(239, 68, 68);
-    padding-left: 4px;
-    width: 100px;
+  font-size: 12px;
+  color: rgb(239, 68, 68);
+  padding-left: 4px;
+  width: 100px;
 }
 
 .submit-breed-button {
