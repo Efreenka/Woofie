@@ -48,6 +48,7 @@
             v-model="formData.height"
             @blur="v$.height.$touch"
             class="pl-1 text-sm md:text-base"
+            min="0"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.height.$errors" :key="error.$uid" class="text-xs text-red-500">
@@ -66,6 +67,7 @@
             v-model="formData.weight"
             @blur="v$.weight.$touch"
             class="pl-1 text-sm md:text-base"
+            min="0"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.weight.$errors" :key="error.$uid" class="text-xs text-red-500">
@@ -84,6 +86,7 @@
             v-model="formData.price"
             @blur="v$.price.$touch"
             class="pl-1 text-sm md:text-base"
+            min="0"
             :disabled="!formData.breedId"
           />
           <span v-for="error in v$.price.$errors" :key="error.$uid" class="text-xs text-red-500">
