@@ -1,10 +1,6 @@
 <template>
   <div class="container">
     <div class="a">
-      <button id="show-modal" @click="showModal">
-        <font-awesome-icon :icon="['fas', 'plus']" />
-      </button>
-
       <Teleport to="body">
         <TheModal :show="isModalOpen" @closeModal="closeModal">
           <template #header>
@@ -16,6 +12,7 @@
         </TheModal>
       </Teleport>
     </div>
+    <BreedTable @showModal="showModal"></BreedTable>
   </div>
 </template>
 
@@ -23,6 +20,7 @@
 import { ref } from 'vue'
 import TheModal from '@/components/TheModal.vue'
 import BreedCreateForm from '@/components/BreedCreateForm.vue'
+import BreedTable from '@/components/BreedTable.vue'
 
 const isModalOpen = ref(false)
 

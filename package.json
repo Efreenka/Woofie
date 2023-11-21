@@ -18,6 +18,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@oruga-ui/oruga-next": "^0.7.0",
+    "@oruga-ui/theme-oruga": "^0.0.1",
     "@types/uuid": "^9.0.3",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
