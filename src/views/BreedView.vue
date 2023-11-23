@@ -48,7 +48,7 @@ const closeModal = () => {
 
 @media (max-width: 768px) {
   .containerBreed {
-      width: 100%;
+    width: 100%;
   }
 }
 </style>
