@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="containerBreed">
     <div class="a">
       <Teleport to="body">
         <TheModal :show="isModalOpen" @closeModal="closeModal">
@@ -34,15 +34,21 @@ const closeModal = () => {
 </script>
 
 <style>
-.container {
+.containerBreed {
   background-color: rgb(244, 248, 248);
   padding-top: 64px;
-  height: 100vh;
+  min-height: 100vh;
   margin: auto;
   width: 75%;
 }
 
 .a {
   margin: 10px 20px;
+}
+
+@media (max-width: 768px) {
+  .containerBreed {
+      width: 100%;
+  }
 }
 </style>
