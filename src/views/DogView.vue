@@ -1,6 +1,6 @@
 <template>
   <div class="m-auto grid h-screen justify-center bg-bgColor pt-16 md:w-3/4">
-    <div class="flex flex-row flex-wrap gap-8 bg-bgColor p-10">
+    <div class="flex flex-col flex-wrap justify-center gap-8 bg-bgColor pt-10 md:flex-row">
       <button
         id="show-modal"
         @click="showModal"
