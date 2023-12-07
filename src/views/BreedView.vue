@@ -13,6 +13,7 @@
       </Teleport>
     </div>
     <BreedTable @showModal="showModal"></BreedTable>
+    <span>Ahooooj</span>
   </div>
 </template>
 
